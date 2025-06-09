@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HelenCore Assistant Dashboard</title>
+    <style>
+        body { background: #111; color: #eee; font-family: monospace; margin: 0; padding: 0; }
+        header { padding: 1rem; background: #000; text-align: center; color: #f15; font-size: 1.5rem; }
+        main { padding: 1rem; display: flex; flex-direction: column; align-items: center; }
+        svg { background-color: #000; width: 90%; max-width: 900px; height: auto; border: 2px solid #f15; margin-bottom: 1rem; }
+        .log { background: #222; color: #6ef; padding: 1rem; width: 90%; max-width: 900px; height: 150px; overflow-y: auto; border-left: 4px solid #6ef; }
+        button { margin: 0.25rem; padding: 0.5rem 1rem; font-weight: bold; background: #f15; color: #111; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <header>HelenCore Assistant Spawn Dashboard</header>
+    <main>
+        <object id="assistantMap" type="image/svg+xml" data="HelenCore_Assistant_Hierarchy.svg"></object>
+
+        <div>
+            <button onclick="spawn('strategist')">Spawn Strategist</button>
+            <button onclick="spawn('technologist')">Spawn Technologist</button>
+            <button onclick="spawn('critic')">Spawn Critic</button>
+            <button onclick="spawn('exec')">Spawn Executive Whisperer</button>
+            <button onclick="spawn('ritual')">Spawn Ritual Designer</button>
+        </div>
+
+        <div class="log" id="logBox">
+            <!-- Spawn logs will go here -->
+        </div>
+    </main>
+
+    <script>
+        function spawn(role) {
+            const roleMap = {
+                strategist: "Strategist Assistant",
+                technologist: "Creative Technologist Assistant",
+                critic: "Dark Humor Critic Assistant",
+                exec: "Executive Whisperer Assistant",
+                ritual: "Ritual Systems Designer Assistant"
+            };
+
+            const logBox = document.getElementById("logBox");
+            const label = roleMap[role] || "Unknown Role";
+            const timestamp = new Date().toLocaleTimeString();
+
+            logBox.innerHTML += `[${timestamp}] 🧠 Spawned: ${label}<br/>`;
+            logBox.scrollTop = logBox.scrollHeight;
+
+            // --- INSERT YOUR API HOOK HERE ---
+            // fetch("https://your-api-endpoint/spawn", {
+            //     method: "POST",
+            //     headers: { "Content-Type": "application/json" },
+            //     body: JSON.stringify({ role: role })
+            // }).then(res => res.json()).then(data => {
+            //     logBox.innerHTML += `→ API response: ${JSON.stringify(data)}<br/>`;
+            // });
+        }
+    </script>
+</body>
+</html>
