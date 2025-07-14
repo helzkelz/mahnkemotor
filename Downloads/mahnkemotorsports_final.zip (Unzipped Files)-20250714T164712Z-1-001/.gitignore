@@ -1,0 +1,164 @@
+# Personal/System Files - Exclude everything from user directory
+../../*
+../*
+
+# But include only the project files (whitelist approach)
+!/mahnkemotorsports_final.zip (Unzipped Files)/
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Firebase
+.firebase/
+.firebaserc
+firebase-debug.log*
+firestore-debug.log*
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Operating System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Windows
+*.exe
+*.msi
+*.7z
+
+# IDE/Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Build directories
+build/
+dist/
+.next/
+out/
+
+# Cache directories
+.cache/
+.parcel-cache/
+.nyc_output/
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# Logs
+logs/
+*.log
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional stylelint cache
+.stylelintcache
+
+# Yarn Integrity file
+.yarn-integrity
+
+# parcel-bundler cache (https://parceljs.org/)
+.parcel-cache
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn v2
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+
+# Temporary folders
+tmp/
+temp/
+
+# Archives
+*.zip
+*.tar.gz
+*.rar
+
+# Exclude all system and personal directories
+AppData/
+Documents/
+Downloads/
+Desktop/
+Music/
+Videos/
+Pictures/
+OneDrive/
+.android/
+.cache/
+.config/
+.ssh/
+.gnupg/
+.expo/
+.firebase/
+.gsutil/
+.redhat/
+.chocolatey/
+.codex/
+.crossnote/
+.quokka/
+.vscode/
+.github/
+.gitconfig
+.bash_history
+.bash_profile
+.bashrc
+.boto
+.lesshst
+.minttyrc
+.node_repl_history
+.wslconfig
+Links/
+Contacts/
+Favorites/
+Searches/
+NetHood/
+PrintHood/
+Recent/
+SendTo/
+Templates/
+NTUSER.DAT*
+ntuser.dat*
+ntuser.ini

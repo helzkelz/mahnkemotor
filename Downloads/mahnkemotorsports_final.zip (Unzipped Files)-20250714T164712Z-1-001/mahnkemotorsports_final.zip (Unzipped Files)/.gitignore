@@ -1,0 +1,21 @@
+# Node.js
+node_modules
+npm-debug.log
+yarn-error.log
+
+# Firebase
+.firebase
+firestore.indexes.json
+firestore.rules
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# Log files
+*.log
+
+# Others
+.env
+.env.*
+
