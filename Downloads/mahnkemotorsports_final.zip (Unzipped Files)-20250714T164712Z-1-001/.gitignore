@@ -1,9 +1,72 @@
-# Personal/System Files - Exclude everything from user directory
-../../*
-../*
-
-# But include only the project files (whitelist approach)
-!/mahnkemotorsports_final.zip (Unzipped Files)/
+# Security and sensitive files
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*.cer
+*.der
+*.keystore
+*.jks
+*.p8
+*.mobileprovision
+*.provisionprofile
+*.token
+*.secret
+*.auth
+*.pwd
+*.password
+*.passwd
+*.credentials
+*.cert
+*.gpg
+*.asc
+*.sig
+*.ssh
+*.priv
+*.private
+*.pub
+*.public
+*.rsa
+*.dsa
+*.ecdsa
+*.ed25519
+*.ppk
+*.ca-bundle
+*.ca-cert
+*.client-cert
+*.client-key
+*.server-cert
+*.server-key
+*.ssl-cert
+*.ssl-key
+*.tls-cert
+*.tls-key
+*.truststore
+*.wallet
+*.kdb
+*.sth
+*.kyr
+*.arm
+secrets.json
+config.json
+.env*
+.secrets
+.credentials
+.ssh/
+.gnupg/
+.gpg/
+.pgp/
+.kube/
+.docker/
+.aws/
+.azure/
+.gcp/
+.google/
+.ibm/
+config/keys.js
+config/config.json
+secrets/
 
 # Node.js
 node_modules/
@@ -116,49 +179,203 @@ temp/
 *.zip
 *.tar.gz
 *.rar
+*.tar
+*.bz2
+*.xz
+*.gz
+*.Z
+*.lz
+*.lzma
+*.deb
+*.rpm
+*.dmg
+*.iso
+*.img
+*.bin
+*.exe
+*.msi
+*.app
+*.pkg
+*.war
+*.jar
+*.ear
+*.class
+*.pyc
+*.pyo
+*.pyd
+*.so
+*.dll
+*.dylib
+*.a
+*.o
+*.obj
+*.lib
+*.pdb
+*.idb
+*.dsym
+*.map
 
-# Exclude all system and personal directories
-AppData/
-Documents/
-Downloads/
-Desktop/
-Music/
-Videos/
-Pictures/
-OneDrive/
-.android/
-.cache/
-.config/
-.ssh/
-.gnupg/
-.expo/
-.firebase/
-.gsutil/
-.redhat/
-.chocolatey/
-.codex/
-.crossnote/
-.quokka/
+# Backup files
+*.bak
+*.backup
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+*.orig
+*.rej
+*.patch
+*.diff
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Local development files
 .vscode/
-.github/
-.gitconfig
-.bash_history
-.bash_profile
-.bashrc
-.boto
-.lesshst
-.minttyrc
-.node_repl_history
-.wslconfig
-Links/
-Contacts/
-Favorites/
-Searches/
-NetHood/
-PrintHood/
-Recent/
-SendTo/
-Templates/
-NTUSER.DAT*
-ntuser.dat*
-ntuser.ini
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.code-workspace
+.history/
+.vscode-test/
+.metals/
+.bloop/
+.ammonite/
+.scala-build/
+.bsp/
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+*.db-wal
+*.db-shm
+*.mdb
+*.accdb
+*.fdb
+*.gdb
+*.sdb
+*.4db
+*.4dd
+*.4dindy
+*.4dindx
+*.4dr
+*.sql
+*.dump
+*.bak
+*.backup
+*.dmp
+*.frm
+*.MYD
+*.MYI
+*.ibd
+*.dbf
+*.dat
+*.log
+*.ldf
+*.mdf
+*.ndf
+*.trc
+*.xel
+*.mdx
+*.idx
+*.cdx
+*.fpt
+*.memo
+*.ntx
+*.dbv
+*.prg
+*.fxp
+*.scx
+*.sct
+*.vcx
+*.vct
+*.frx
+*.frt
+*.mnx
+*.mnt
+*.pjx
+*.pjt
+*.dbc
+*.dct
+*.dcx
+# Machine learning models
+*.model
+*.pkl
+*.pickle
+*.h5
+*.hdf5
+*.pb
+*.pth
+*.pt
+*.onnx
+*.tflite
+*.mlmodel
+*.joblib
+*.sav
+*.dump
+*.weights
+*.ckpt
+*.index
+*.meta
+*.data-*
+*.bin
+*.safetensors
+
+# Large data files (uncomment if needed)
+# *.csv
+# *.json
+# *.xml
+# *.parquet
+# *.feather
+# *.arrow
+# *.orc
+# *.avro
+# *.hdf
+# *.mat
+# *.npy
+# *.npz
+# *.tfrecord
+# *.tfrecords
+# *.txt
+
+# Additional runtime files
+*.out
+*.err
+*.stderr
+*.stdout
+*.lock
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+*.url
+*.website
+*.webloc
+*.fileloc
+*.icloud
+*.symlink
+*.alias
+*.shortcut
+*.desktop
+*.directory
