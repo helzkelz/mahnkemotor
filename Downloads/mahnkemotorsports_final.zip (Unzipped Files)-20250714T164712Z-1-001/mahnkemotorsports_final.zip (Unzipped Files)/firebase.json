@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "site": "mahnkemotorsports",
+    "public": "public",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "rewrites": [
+      {
+        "source": "**",
+        "run": {
+          "serviceId": "minky-backend",
+          "region": "us-central1"
+        }
+      }
+    ]
+  }
+}
