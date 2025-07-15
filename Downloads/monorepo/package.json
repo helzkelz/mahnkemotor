@@ -1,0 +1,28 @@
+{
+  "name": "godmode-stack",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "dev:helenkella": "turbo run dev --filter=helenkella-web",
+    "dev:mysconduct": "turbo run dev --filter=mysconduct-web",
+    "dev:mysmanaged": "turbo run dev --filter=mysmanaged-web",
+    "dev:thesatirium": "turbo run dev --filter=thesatirium-web",
+    "dev:dashboard": "turbo run dev --filter=dashboard",
+    "build:helenkella": "turbo run build --filter=helenkella-web",
+    "build:mysconduct": "turbo run build --filter=mysconduct-web",
+    "build:mysmanaged": "turbo run build --filter=mysmanaged-web",
+    "build:thesatirium": "turbo run build --filter=thesatirium-web",
+    "build:dashboard": "turbo run build --filter=dashboard"
+  },
+  "devDependencies": {
+    "turbo": "^1.13.0",
+    "pnpm": "^8.0.0"
+  }
+}

@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #2d151e;
+  color: #f9e7f5;
+}
+
+.btn {
+  display: inline-block;
+  background: #be185d;
+  color: #fff;
+  padding: 0.7em 2em;
+  border-radius: 0.5em;
+  font-weight: 600;
+  text-decoration: none;
+  margin: 0 6px;
+  transition: background 0.18s;
+}
+.btn:hover {
+  background: #f472b6;
+}

@@ -1,0 +1,11 @@
+{
+  "CLOUDFLARE_ZONE_ID": "your-zone-id",
+  "CLOUDFLARE_API_TOKEN": "your-api-token",
+  "CANONICAL_DOMAINS": [
+    "helenkella.com",
+    "mysconduct.com",
+    "satirium.com",
+    "lorefront.com"
+  ],
+  "ALERT_WEBHOOK_URL": "https://discord.com/api/webhooks/..."
+}

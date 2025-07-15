@@ -1,0 +1,9 @@
+{
+  "name": "cli",
+  "version": "1.0.0",
+  "private": true,
+  "main": "enqueue_mission.js",
+  "scripts": {
+    "start": "node enqueue_mission.js"
+  }
+}
