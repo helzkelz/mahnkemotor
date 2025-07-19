@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HelenKella.com</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+            background-color: #111;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .full-screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('IMG_A1560A09-8A85-4E4D-A246-A2232306B578.jpeg');
+            background-size: cover;
+            background-position: center;
+            filter: grayscale(100%) blur(2px);
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 2em;
+            text-align: center;
+            font-weight: bold;
+            padding: 20px;
+        }
+        .loading-text {
+            font-size: 2rem;
+            opacity: 0;
+            animation: fadeIn 4s forwards;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        .main-content {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        .main-content h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        .main-content p {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+        }
+        .btn {
+            background-color: #ff5f00;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #d94e00;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Full screen image with overlay -->
+    <div class="full-screen"></div>
+    <div class="overlay">
+        <div class="loading-text">
+            <p>Welcome to HelenKella.com</p>
+            <p>I build the tools.</p>
+            <p>Loading the interface...</p>
+        </div>
+    </div>
+
+    <!-- Main Content after loading -->
+    <div class="main-content">
+        <h1>Welcome to HelenKella.com</h1>
+        <p>Your tools. Your path. Your system.</p>
+        <a href="#choose-suite" class="btn">Enter the Forge</a>
+    </div>
+
+    <script>
+        setTimeout(() => {
+            document.querySelector('.overlay').style.display = 'none';
+            document.querySelector('.main-content').style.display = 'block';
+        }, 4000); // Delay for 4 seconds before showing main content
+    </script>
+
+</body>
+</html>

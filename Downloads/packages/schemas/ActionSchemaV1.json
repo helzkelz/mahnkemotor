@@ -1,0 +1,21 @@
+{
+  "type": "object",
+  "title": "Action Schema V1",
+  "description": "Defines the structure for actions/missions processed by the Godmode OS Cognitive Core.",
+  "properties": {
+    "mission": {
+      "type": "string",
+      "description": "The natural language goal of the mission."
+    },
+    "slug": {
+      "type": "string",
+      "description": "A unique, URL-friendly identifier for the mission."
+    },
+    "context": {
+      "type": "object",
+      "description": "Optional. Additional context or parameters for the mission.",
+      "additionalProperties": true
+    }
+  },
+  "required": ["mission", "slug"]
+}

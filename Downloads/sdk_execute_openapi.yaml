@@ -1,0 +1,87 @@
+openapi: 3.1.0
+info:
+  title: HelenCore Execution SDK
+  version: 1.0.0
+  description: Endpoint for executing agents or rituals via schema-bound runtime.
+paths:
+  /sdk/execute:
+    post:
+      summary: Execute a schema-validated ritual or agent pipeline
+      description: |
+        Triggers a runtime invocation for an agent@v1 or ritual chain,
+        following ActionSchemaV1 input/output contract. This endpoint supports
+        AI-backed dynamic agent execution via HelenCore Execution SDK.
+      parameters:
+        - in: header
+          name: x-execution-schema-version
+          required: true
+          schema:
+            type: string
+            example: "1.0"
+        - in: header
+          name: x-agent-version
+          required: false
+          schema:
+            type: string
+            example: "agent@v1"
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+            example: "Bearer {token}"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExecutionRequest'
+      responses:
+        '200':
+          description: Execution result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExecutionResult'
+        '400':
+          description: Schema validation error
+        '401':
+          description: Unauthorized or invalid token
+        '500':
+          description: Execution failure or agent crash
+components:
+  schemas:
+    ExecutionRequest:
+      type: object
+      required:
+        - agent
+        - input
+      properties:
+        agent:
+          type: string
+          example: "agent@v1"
+        input:
+          type: object
+          required:
+            - context
+            - params
+          properties:
+            context:
+              type: object
+              description: Arbitrary execution context passed to agent runtime
+            params:
+              type: object
+              description: Input parameters bound to the agent's ActionSchemaV1
+    ExecutionResult:
+      type: object
+      properties:
+        output:
+          type: object
+          description: Structured response from agent
+        trace_id:
+          type: string
+          description: Debug trace ID
+        duration_ms:
+          type: integer
+        success:
+          type: boolean

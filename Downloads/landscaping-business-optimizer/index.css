@@ -1,0 +1,757 @@
+/* Reset and Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --color-primary-bg: #f8f9fa; /* Light grey for main background */
+    --color-secondary-bg: #ffffff; /* White for content cards/sections */
+    --color-text-dark: #343a40; /* Dark grey for primary text */
+    --color-text-medium: #6c757d; /* Medium grey for secondary text/placeholders */
+    --color-text-light: #f8f9fa; /* Light text for dark backgrounds (buttons) */
+    
+    --color-accent-emerald: #2ecc71;
+    --color-accent-emerald-dark: #27ae60;
+    --color-accent-gold: #f1c40f;
+    --color-accent-gold-dark: #f39c12;
+    --color-accent-blue: #007bff; /* Primary AI action blue */
+    --color-accent-blue-dark: #0056b3;
+    --color-accent-purple: #6f42c1; /* Tertiary actions */
+    --color-accent-purple-dark: #5a32a3;
+    --color-accent-orange: #fd7e14; /* Secondary actions like Clear/Prev */
+    --color-accent-orange-dark: #e67300;
+
+    --color-error: #dc3545; /* Red for errors/low profit */
+    --color-success: var(--color-accent-emerald);
+    --color-warning: var(--color-accent-gold);
+
+    --border-radius: 8px;
+    --box-shadow-light: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --box-shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --transition-speed: 0.2s;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--color-primary-bg);
+    color: var(--color-text-dark);
+    line-height: 1.6;
+    padding: 15px; /* Reduced padding for smaller screens */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+#app-container {
+    background-color: var(--color-secondary-bg);
+    padding: 20px; /* Reduced padding */
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow-medium);
+    width: 100%;
+    max-width: 1100px; /* Wider for dashboard */
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #dee2e6; 
+    position: relative; /* For positioning nav toggle if needed */
+}
+
+header h1 {
+    color: var(--color-text-dark);
+    margin-bottom: 6px;
+    font-size: 2.1em; /* Adjusted size */
+    font-weight: 700;
+}
+
+header #current-season {
+    font-style: italic;
+    color: var(--color-accent-emerald);
+    font-size: 1.1em; /* Adjusted size */
+    margin-bottom: 15px;
+}
+
+/* Navigation Styles */
+#main-nav {
+    margin-top: 0;
+    padding-top: 0;
+    position: relative; /* Context for absolute positioned menu on mobile if needed */
+}
+
+.nav-toggle-btn {
+    display: none; /* Hidden by default, shown on small screens */
+    background-color: transparent;
+    color: var(--color-text-dark);
+    border: none;
+    font-size: 1.8em; /* Size of hamburger icon */
+    padding: 5px 10px;
+    cursor: pointer;
+    position: absolute;
+    top: -55px; /* Adjust to align with header content vertically */
+    right: 0px; 
+    z-index: 1001; /* Ensure it's above other header content */
+}
+.nav-toggle-btn:hover, .nav-toggle-btn:focus {
+    color: var(--color-accent-emerald);
+}
+
+
+#main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px; 
+}
+
+#main-nav li a {
+    text-decoration: none;
+    color: var(--color-text-medium);
+    background-color: transparent;
+    padding: 9px 15px; /* Adjusted padding */
+    border-radius: var(--border-radius);
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    font-weight: 500;
+    display: block;
+    border: 1px solid transparent;
+    font-size: 0.95em;
+}
+
+#main-nav li a:hover,
+#main-nav li a:focus {
+    background-color: #e9ecef; 
+    color: var(--color-text-dark);
+    border-color: #ced4da;
+}
+
+#main-nav li a.active-link {
+    background-color: var(--color-accent-emerald);
+    color: white;
+    font-weight: 700;
+    border-color: var(--color-accent-emerald-dark);
+    box-shadow: 0 2px 4px rgba(46, 204, 113, 0.2);
+}
+
+
+/* Page Content Management */
+.page-content {
+    display: none;
+    margin-bottom: 25px;
+    padding: 20px; 
+    background-color: var(--color-secondary-bg);
+    border-radius: var(--border-radius);
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+.page-content.active-page {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.section-intro, .module-intro {
+    font-size: 1em;
+    margin-bottom: 18px;
+    color: var(--color-text-medium);
+}
+
+h2 {
+    color: var(--color-text-dark);
+    margin-bottom: 20px;
+    font-size: 1.8em; /* Adjusted size */
+    font-weight: 700;
+    border-bottom: 2px solid var(--color-accent-emerald);
+    padding-bottom: 8px;
+}
+
+h3 {
+    color: var(--color-accent-blue);
+    margin-top: 10px; /* Added top margin for spacing when h3 is first */
+    margin-bottom: 15px;
+    font-size: 1.4em; /* Adjusted size */
+    font-weight: 600; /* Bolder H3 */
+}
+.content-module h3, .dashboard-module h3 {
+     margin-top: 0; /* Reset for module context */
+     color: var(--color-accent-purple);
+}
+
+
+/* Form Styles (General) */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); 
+    gap: 18px; 
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 7px; 
+    font-weight: 500;
+    color: var(--color-text-dark);
+    position: relative;
+    font-size: 0.95em;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px 14px; /* Adjusted padding */
+    border: 1px solid #ced4da;
+    border-radius: var(--border-radius);
+    background-color: #fff;
+    color: var(--color-text-dark);
+    font-size: 0.95em;
+    font-family: 'Roboto', sans-serif;
+    transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--color-accent-emerald);
+    box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.25);
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--color-text-medium);
+    font-style: italic;
+    opacity: 0.8;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px; 
+}
+select {
+    appearance: none; /* For custom arrow if desired, not implementing now */
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M5%208l5%205%205-5z%22%20fill%3D%22%236c757d%22/%3E%3C/svg%3E'); /* Simple arrow */
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
+    padding-right: 30px; /* Space for arrow */
+}
+
+
+/* Button Styles */
+button {
+    color: white;
+    padding: 10px 18px; /* Adjusted padding */
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 0.95em; /* Adjusted size */
+    font-weight: 500;
+    transition: background-color var(--transition-speed) ease, transform 0.1s ease, box-shadow var(--transition-speed) ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+button:disabled {
+    background-color: #adb5bd;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+button:active:not(:disabled) {
+    transform: translateY(1px);
+    box-shadow: none;
+}
+button .icon {
+    font-size: 1.1em;
+}
+
+/* Primary Green Button (Confirm, Next) */
+.primary-action-button,
+#wizard-log-job-btn {
+    background-color: var(--color-accent-emerald);
+}
+.primary-action-button:hover:not(:disabled),
+#wizard-log-job-btn:hover:not(:disabled) {
+    background-color: var(--color-accent-emerald-dark);
+    box-shadow: 0 2px 6px rgba(46, 204, 113, 0.3);
+}
+
+/* Secondary Orange Button (Clear, Prev) */
+.secondary-action-button { 
+    background-color: var(--color-accent-orange);
+}
+.secondary-action-button:hover:not(:disabled) {
+    background-color: var(--color-accent-orange-dark);
+    box-shadow: 0 2px 6px rgba(253, 126, 20, 0.3);
+}
+
+/* Tertiary Purple Button (Log Job, Save Quote, etc.) */
+.tertiary-action-button,
+#wizard-save-quote-btn {
+    background-color: var(--color-accent-purple);
+}
+.tertiary-action-button:hover:not(:disabled),
+#wizard-save-quote-btn:hover:not(:disabled) {
+    background-color: var(--color-accent-purple-dark);
+    box-shadow: 0 2px 6px rgba(111, 66, 193, 0.3);
+}
+
+/* AI Action Buttons (Primary Blue) */
+.ai-action-button { 
+    background-color: var(--color-accent-blue);
+}
+.ai-action-button:hover:not(:disabled) {
+    background-color: var(--color-accent-blue-dark);
+    box-shadow: 0 2px 6px rgba(0, 123, 255, 0.3);
+}
+
+/* AI Action Buttons - Alternative (Gold/Yellow for AI Insights page for variety) */
+.ai-action-button-alt {
+    background-color: var(--color-accent-gold);
+    color: var(--color-text-dark); 
+}
+.ai-action-button-alt:hover:not(:disabled) {
+    background-color: var(--color-accent-gold-dark);
+    box-shadow: 0 2px 6px rgba(241, 196, 15, 0.3);
+}
+
+/* Tooltip Styles - Unchanged from previous */
+.tooltip-trigger { /* ... */ }
+.tooltip-trigger::after { /* ... */ }
+.tooltip-trigger:hover::after { /* ... */ }
+
+
+/* Results and Insights */
+.result-box {
+    margin-top: 15px; 
+    padding: 15px; 
+    background-color: #f1f3f5; 
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--color-accent-blue);
+    min-height: 50px; 
+    white-space: pre-wrap; 
+    line-height: 1.5; 
+    font-size: 0.9em; /* Smaller for result boxes */
+    color: var(--color-text-dark);
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.04);
+}
+.result-box.mini-result-box { /* For wizard AI tips */
+    font-size: 0.85em;
+    padding: 10px;
+    margin-top: 8px;
+    min-height: 40px;
+}
+
+.result-box.good-profit { border-left-color: var(--color-success); }
+.result-box.neutral-profit { border-left-color: var(--color-warning); }
+.result-box.low-profit { border-left-color: var(--color-error); }
+.result-box.info { border-left-color: var(--color-accent-blue); }
+
+/* Profit text colors */
+.good-profit-text { color: var(--color-success); font-weight: bold; }
+.neutral-profit-text { color: var(--color-accent-gold-dark); font-weight: bold; }
+.low-profit-text { color: var(--color-error); font-weight: bold; }
+
+
+/* Profit Bar (Wizard and Old Calculator) */
+#profit-margin-bar-container,
+#wizard-profit-margin-bar-container {
+    height: 14px; 
+    background-color: #e9ecef;
+    border-radius: 7px;
+    margin-top: 10px;
+    margin-bottom: 15px; /* Added margin bottom */
+    overflow: hidden;
+    border: 1px solid #dee2e6;
+    display: none; /* Hidden by default, JS will show it */
+}
+#profit-margin-bar, 
+#wizard-profit-margin-bar {
+    height: 100%;
+    width: 0%;
+    border-radius: 6px; /* Slightly smaller for inner bar */
+    transition: width 0.5s ease-in-out, background-color 0.5s ease-in-out;
+    background-color: var(--color-accent-blue); /* Default color */
+}
+
+/* Insight Cards for AI Insights Page */
+.insight-card {
+    background-color: var(--color-secondary-bg);
+    padding: 18px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow-light);
+    margin-bottom: 18px;
+    border: 1px solid #e9ecef;
+}
+.insight-card h3 {
+    margin-top: 0;
+    color: var(--color-accent-emerald);
+}
+
+/* Dashboard Styles */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+.dashboard-module {
+    background-color: #f8f9fa; /* Slightly off-white for modules */
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow-light);
+    border: 1px solid #e9ecef;
+}
+.dashboard-module h3 {
+    color: var(--color-accent-purple);
+    margin-bottom: 15px;
+    font-size: 1.3em;
+}
+.dashboard-module .result-box {
+    margin-bottom: 10px; /* Space before button if result is shown */
+}
+.dashboard-module button {
+    width: 100%;
+    margin-top: 10px;
+}
+.dashboard-module.quick-actions button {
+    margin-bottom: 10px;
+}
+.dashboard-module.conceptual-reminders p {
+    font-size: 0.9em;
+    padding: 8px;
+    background-color: var(--color-secondary-bg);
+    border-radius: calc(var(--border-radius) - 2px);
+    margin-bottom: 8px;
+    border-left: 3px solid var(--color-accent-gold);
+}
+
+
+/* Wizard Styles */
+.wizard-container {
+    padding: 20px;
+    background-color: #fdfdff; /* Slightly different bg for wizard area */
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow-light);
+    margin-bottom: 25px;
+}
+.wizard-container > h3 {
+    text-align: center;
+    color: var(--color-accent-emerald);
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+.wizard-step {
+    display: none;
+    animation: fadeInStep 0.5s ease-in-out;
+    border-bottom: 1px dashed #eee;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+.wizard-step:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+.wizard-step.active-step {
+    display: block;
+}
+.wizard-step h4 {
+    font-size: 1.2em;
+    color: var(--color-text-dark);
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+.wizard-ai-tip-btn {
+    font-size: 0.85em !important;
+    padding: 6px 10px !important;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+.wizard-next-btn, .wizard-prev-btn {
+    margin-top: 15px;
+    margin-right: 10px;
+}
+.wizard-actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+#wizard-status.status-message {
+    margin-top: 15px;
+    font-style: italic;
+    padding: 8px;
+    border-radius: var(--border-radius);
+    text-align: center;
+    font-weight: 500;
+}
+.success-message-text { color: var(--color-success); background-color: #e6ffed; border: 1px solid var(--color-success); }
+.error-message-text { color: var(--color-error); background-color: #ffebee; border: 1px solid var(--color-error); }
+.info-message-text { color: var(--color-accent-blue); background-color: #e7f3ff; border: 1px solid var(--color-accent-blue); }
+
+
+@keyframes fadeInStep {
+    from { opacity: 0; transform: translateX(20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* Quote Requests & Session Log on Quotes & Jobs Page */
+.content-module {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+#log-quote-request-form button { margin-top: 10px; }
+#quote-requests-list table,
+#session-log-page #logged-jobs-list table, /* Old reference, ensure new structure takes over */
+#session-job-log-module #logged-jobs-list table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9em; /* Smaller table text */
+}
+#quote-requests-list th, #quote-requests-list td,
+#session-job-log-module #logged-jobs-list th, 
+#session-job-log-module #logged-jobs-list td {
+    padding: 9px 10px; 
+    text-align: left;
+    border-bottom: 1px solid #e9ecef;
+}
+#quote-requests-list th,
+#session-job-log-module #logged-jobs-list th {
+    background-color: #f8f9fa;
+    color: var(--color-accent-emerald);
+    font-weight: 500;
+}
+#quote-requests-list td,
+#session-job-log-module #logged-jobs-list td { color: var(--color-text-dark); }
+#quote-requests-list tr:last-child td,
+#session-job-log-module #logged-jobs-list tr:last-child td { border-bottom: none; }
+
+#quote-requests-list tr:hover,
+#session-job-log-module #logged-jobs-list tr:hover { background-color: #f1f3f5; }
+
+#session-job-log-module #session-summary-container { /* Style for session summary within quotes & jobs */
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #e9ecef;
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--color-accent-gold);
+}
+#session-job-log-module #session-summary-container h3 { margin-top: 0; margin-bottom: 10px; color: var(--color-accent-gold); font-size: 1.2em; }
+#session-job-log-module #session-summary-details p { margin-bottom: 5px; font-size: 0.95em; }
+
+
+/* Calendar Styles */
+.calendar-container {
+    padding: 15px;
+    background-color: var(--color-secondary-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow-light);
+    margin-bottom: 20px;
+}
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.calendar-header h3 { color: var(--color-accent-emerald); margin:0; font-size: 1.3em;}
+.calendar-header button {
+    background-color: var(--color-accent-blue);
+    font-size: 0.9em;
+    padding: 6px 12px;
+}
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    text-align: center;
+}
+.calendar-grid div {
+    padding: 10px 5px;
+    background-color: #f8f9fa;
+    border-radius: calc(var(--border-radius) - 4px);
+    font-size: 0.85em;
+    min-height: 60px; /* For day numbers and potential events */
+    border: 1px solid #eee;
+}
+.calendar-grid .day-name {
+    font-weight: bold;
+    color: var(--color-accent-purple);
+    background-color: transparent;
+    border: none;
+    min-height: auto;
+    padding-bottom: 5px;
+}
+.calendar-grid .other-month {
+    color: #ccc;
+    background-color: #fdfdfd;
+}
+.calendar-grid .current-day {
+    background-color: var(--color-accent-gold-dark) !important;
+    color: white !important;
+    font-weight: bold;
+}
+#calendar-ai-insights h3 { font-size: 1.2em; color: var(--color-accent-purple); margin-bottom: 10px;}
+
+
+/* Map & Routes Page */
+.map-placeholder {
+    height: 150px; /* Reduced height */
+    background-color: #e9ecef;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--border-radius);
+    margin-bottom: 15px;
+    color: var(--color-text-medium);
+    font-style: italic;
+    border: 1px dashed var(--color-text-medium);
+}
+#map-routes-page textarea { margin-bottom: 10px; }
+
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 30px; 
+    padding-top: 15px;
+    border-top: 1px solid #dee2e6;
+    font-size: 0.85em;
+    color: var(--color-text-medium);
+}
+
+/* Utility for loading states */
+.loading-message {
+    font-style: italic;
+    color: var(--color-accent-blue);
+    padding: 8px;
+    text-align: center;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    body { padding: 10px; }
+    #app-container { padding: 15px; }
+    header h1 { font-size: 1.8em; }
+    header { padding-bottom: 5px; /* Adjust header padding for nav toggle */ }
+    .nav-toggle-btn { 
+        display: block; /* Show hamburger */
+        top: -48px; /* Fine-tune position relative to H1 and season text */
+        right: 5px;
+    }
+
+    #main-nav {
+        margin-top: 5px; /* Add some space above the collapsed menu if needed */
+    }
+
+    #main-nav ul {
+        flex-direction: column;
+        gap: 0px; /* Remove gap for vertical items */
+        width: 100%;
+        background-color: var(--color-secondary-bg);
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow-light);
+        position: absolute; /* Take out of flow for overlay */
+        top: 5px; /* Position below the toggle button's effective area */
+        left: 0;
+        z-index: 1000;
+        max-height: 0; /* Collapsed by default */
+        overflow: hidden;
+        opacity: 0;
+        transition: max-height 0.35s ease-in-out, opacity 0.3s ease-in-out;
+    }
+    #main-nav.nav-open ul {
+        max-height: 500px; /* Make sure this is enough for all items */
+        opacity: 1;
+        padding: 5px 0; /* Add some padding when open */
+        border: 1px solid #e0e0e0;
+    }
+
+    #main-nav li a { 
+        text-align: left; /* Align text left for vertical menu */
+        padding: 12px 20px; /* More padding for easier tapping */
+        width: 100%;
+        border-radius: 0; /* Full width items, no individual radius */
+        border-bottom: 1px solid #f0f0f0; /* Separator lines */
+    }
+    #main-nav li:last-child a {
+        border-bottom: none;
+    }
+    #main-nav li a:hover,
+    #main-nav li a:focus {
+        background-color: var(--color-accent-emerald);
+        color: white;
+    }
+     #main-nav li a.active-link { /* Ensure active link is distinct in collapsed menu */
+        background-color: var(--color-accent-emerald-dark);
+        font-weight: bold;
+    }
+
+
+    h2 { font-size: 1.5em; }
+    h3 { font-size: 1.25em; }
+
+    button { 
+        /* width: 100%; */ /* Removed global full width for buttons */
+        margin-bottom: 8px; 
+    }
+    .wizard-actions button,
+    .dashboard-module button, /* Dashboard buttons should be full width */
+    .form-grid button { 
+        width: auto; 
+    }
+    .dashboard-module button { width: 100%; } /* Re-apply for dashboard */
+
+    .wizard-next-btn, .wizard-prev-btn { width: auto; } /* Wizard nav buttons not full width */
+    #log-quote-request-form button { width: 100%;} /* Quote form button full width for impact */
+
+
+    .form-grid { grid-template-columns: 1fr; }
+    .dashboard-grid { grid-template-columns: 1fr; }
+
+
+    .tooltip-trigger::after { 
+        left: 5%; 
+        right: 5%;
+        transform: translateX(0) translateY(-5px); 
+        width: 90%; 
+        min-width: unset; 
+        white-space: normal; 
+    }
+
+    #quote-requests-list table,
+    #session-job-log-module #logged-jobs-list table {
+        font-size: 0.85em; 
+    }
+    #quote-requests-list th, #quote-requests-list td,
+    #session-job-log-module #logged-jobs-list th, 
+    #session-job-log-module #logged-jobs-list td {
+        padding: 7px 8px;
+    }
+    .calendar-grid div { font-size: 0.75em; padding: 6px 3px; min-height: 50px;}
+}
+
+/* Specific text area stylings */
+#location-efficiency-page textarea,
+#community-qa-page textarea,
+#daily-review-page textarea {
+     margin-bottom: 10px;
+}

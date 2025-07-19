@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landscaping Business Optimizer Pro</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://esm.sh/@google/genai@^1.5.1"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+    <div id="app-container">
+        <header>
+            <h1>🌿 Landscaping Optimizer Pro</h1>
+            <p id="current-season">Loading season...</p>
+            <nav id="main-nav">
+                <button id="nav-toggle-btn" class="nav-toggle-btn" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-nav-ul">
+                    ☰
+                </button>
+                <ul id="main-nav-ul">
+                    <li><a href="#dashboard-page" class="nav-link active-link" data-page="dashboard-page">Dashboard</a></li>
+                    <li><a href="#quotes-jobs-page" class="nav-link" data-page="quotes-jobs-page">Quotes & Jobs</a></li>
+                    <li><a href="#calendar-page" class="nav-link" data-page="calendar-page">Calendar</a></li>
+                    <li><a href="#map-routes-page" class="nav-link" data-page="map-routes-page">Map & Routes</a></li>
+                    <li><a href="#ai-insights-page" class="nav-link" data-page="ai-insights-page">AI Insights</a></li>
+                    <li><a href="#daily-review-page" class="nav-link" data-page="daily-review-page">Daily Review</a></li>
+                    <li><a href="#community-qa-page" class="nav-link" data-page="community-qa-page">Community Q&A</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section id="dashboard-page" class="page-content active-page" aria-labelledby="dashboard-heading">
+                <h2 id="dashboard-heading">Dashboard</h2>
+                <div class="dashboard-grid">
+                    <div class="dashboard-module quick-actions">
+                        <h3>🚀 Quick Actions</h3>
+                        <button id="go-to-new-quote-wizard-btn" class="primary-action-button"><span class="icon">➕</span> Start New Quote/Job</button>
+                        <button id="go-to-log-quote-request-btn" class="secondary-action-button"><span class="icon">📝</span> Log Incoming Quote Request</button>
+                    </div>
+
+                    <div class="dashboard-module weekly-outlook">
+                        <h3>🗓️ Weekly Outlook & Tasks</h3>
+                        <div id="ai-weekly-outlook-result" class="result-box" aria-live="polite">Click to get AI-powered weekly outlook.</div>
+                        <button id="get-ai-weekly-outlook-btn" class="ai-action-button-alt"><span class="icon">🌦️</span> Get Weekly Outlook</button>
+                    </div>
+                    
+                    <div class="dashboard-module market-pulse-module">
+                        <h3><span class="icon">🔍</span> Market Pulse & Alerts</h3>
+                        <div id="dashboard-market-pulse-result" class="result-box" aria-live="polite">Stay updated with market trends.</div>
+                        <button id="get-dashboard-market-pulse-btn" class="ai-action-button"><span class="icon">📈</span> Refresh Market Pulse</button>
+                    </div>
+
+                    <div class="dashboard-module conceptual-reminders">
+                        <h3>🔔 Reminders (Conceptual)</h3>
+                        <p>Follow up on Quote #1023 for Smith.</p>
+                        <p>Check material stock for upcoming big job.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="quotes-jobs-page" class="page-content" aria-labelledby="quotes-jobs-heading">
+                <h2 id="quotes-jobs-heading">Quotes & Jobs Management</h2>
+                
+                <div id="quote-job-wizard" class="wizard-container">
+                    <h3>New Quote/Job Wizard</h3>
+                    <!-- Step 1: Client Details -->
+                    <div id="wizard-step-1" class="wizard-step active-step">
+                        <h4>Step 1: Client Details</h4>
+                        <div class="form-grid">
+                            <div><label for="wizard-client-name">Client Name:</label><input type="text" id="wizard-client-name" placeholder="e.g., Jane Doe"></div>
+                            <div><label for="wizard-client-contact">Client Contact (Phone/Email):</label><input type="text" id="wizard-client-contact" placeholder="e.g., 555-1234 or jane@example.com"></div>
+                            <div><label for="wizard-client-address">Job Address / Area:</label><input type="text" id="wizard-client-address" placeholder="e.g., 123 Bloom St, Anytown"></div>
+                        </div>
+                        <button class="ai-action-button-alt wizard-ai-tip-btn" data-step="1"><span class="icon">💡</span> AI Tips for Client Communication</button>
+                        <div id="wizard-step-1-ai-result" class="result-box mini-result-box" aria-live="polite"></div>
+                        <button class="wizard-next-btn primary-action-button" data-next="wizard-step-2">Next <span class="icon">➡️</span></button>
+                    </div>
+
+                    <!-- Step 2: Job Scope -->
+                    <div id="wizard-step-2" class="wizard-step">
+                        <h4>Step 2: Job Scope & Type</h4>
+                        <div class="form-grid">
+                             <div><label for="wizard-job-type">Job Type:</label><input type="text" id="wizard-job-type" placeholder="e.g., Spring Cleanup, Patio Installation"></div>
+                             <div>
+                                <label for="wizard-job-recurrence">Job Recurrence:</label>
+                                <select id="wizard-job-recurrence">
+                                    <option value="One-off" selected>One-off</option>
+                                    <option value="Weekly">Weekly</option>
+                                    <option value="Bi-weekly">Bi-weekly</option>
+                                    <option value="Monthly">Monthly</option>
+                                </select>
+                            </div>
+                             <div style="grid-column: 1 / -1;"><label for="wizard-job-description">Brief Job Description:</label><textarea id="wizard-job-description" rows="3" placeholder="e.g., Full yard cleanup, leaf removal, hedge trimming. OR Install 10x12 paver patio."></textarea></div>
+                        </div>
+                        <button class="ai-action-button-alt wizard-ai-tip-btn" data-step="2"><span class="icon">💡</span> AI Tips for Job Scope & Upsells</button>
+                        <div id="wizard-step-2-ai-result" class="result-box mini-result-box" aria-live="polite"></div>
+                        <button class="wizard-prev-btn secondary-action-button" data-prev="wizard-step-1"><span class="icon">⬅️</span> Previous</button>
+                        <button class="wizard-next-btn primary-action-button" data-next="wizard-step-3">Next <span class="icon">➡️</span></button>
+                    </div>
+
+                    <!-- Step 3: Pricing & AI Cost Estimation -->
+                    <div id="wizard-step-3" class="wizard-step">
+                        <h4>Step 3: Revenue & AI Cost Estimation</h4>
+                        <div class="form-grid">
+                            <div><label for="wizard-revenue">Proposed Revenue ($):</label><input type="number" id="wizard-revenue" step="0.01" min="0" placeholder="e.g., 750"></div>
+                        </div>
+                        <button id="wizard-ai-estimate-costs-btn" class="ai-action-button wizard-ai-tip-btn" data-step="3"><span class="icon">🤖</span> AI Estimate Costs & Profitability</button>
+                        <div id="wizard-step-3-ai-result" class="result-box" aria-live="polite">Enter revenue and click above to get AI cost estimates.</div>
+                        <button class="wizard-prev-btn secondary-action-button" data-prev="wizard-step-2"><span class="icon">⬅️</span> Previous</button>
+                        <button class="wizard-next-btn primary-action-button" data-next="wizard-step-4">Next (Optional Detailed Costs) <span class="icon">➡️</span></button>
+                    </div>
+                    
+                    <!-- Step 4: Detailed Costs (Optional Refinement) -->
+                    <div id="wizard-step-4" class="wizard-step">
+                        <h4>Step 4: Detailed Cost Breakdown (Optional Refinement)</h4>
+                        <p class="module-intro">Enter specific costs if known. This can help the AI refine savings tips and overall profitability.</p>
+                        <div>
+                            <label for="wizard-detailed-costs">Detailed Cost Items (materials, rentals, etc.):</label>
+                            <textarea id="wizard-detailed-costs" rows="4" placeholder="e.g., 10x Pavers @ $5/each = $50, 1 Ton Gravel @ $80, Plant A @ $20 x5 = $100. Optional: Specific labor hours/costs if known beyond AI's initial estimate."></textarea>
+                        </div>
+                        <button class="ai-action-button-alt wizard-ai-tip-btn" data-step="4"><span class="icon">💡</span> AI Refine & Find Savings in Detailed Costs</button>
+                        <div id="wizard-step-4-ai-result" class="result-box mini-result-box" aria-live="polite"></div>
+                        <button class="wizard-prev-btn secondary-action-button" data-prev="wizard-step-3"><span class="icon">⬅️</span> Previous</button>
+                        <button class="wizard-next-btn primary-action-button" data-next="wizard-step-5">Review & Finalize <span class="icon">➡️</span></button>
+                    </div>
+
+                    <!-- Step 5: Review & Action -->
+                    <div id="wizard-step-5" class="wizard-step">
+                        <h4>Step 5: Review & Action</h4>
+                        <p class="module-intro">Review the details. AI cost estimates will be used unless refined by detailed costs in Step 4.</p>
+                        <div id="wizard-summary-review" class="result-box">Summary will appear here.</div>
+                        <div id="wizard-profit-margin-bar-container">
+                             <div id="wizard-profit-margin-bar"></div>
+                        </div>
+                        <div id="wizard-scheduled-date-container" class="form-grid" style="margin-top: 15px;">
+                           <div>
+                                <label for="wizard-scheduled-date">Scheduled Date (Optional for Booked Job):</label>
+                                <input type="date" id="wizard-scheduled-date">
+                           </div>
+                        </div>
+                        <div class="wizard-actions">
+                            <button id="wizard-save-quote-btn" class="tertiary-action-button"><span class="icon">💾</span> Save as Quote Request</button>
+                            <button id="wizard-log-job-btn" class="primary-action-button"><span class="icon">✔️</span> Log as Finalized Job</button>
+                        </div>
+                        <button class="wizard-prev-btn secondary-action-button" data-prev="wizard-step-4"><span class="icon">⬅️</span> Previous</button>
+                        <button id="wizard-reset-btn" class="secondary-action-button"><span class="icon">🔄</span> Start New Wizard</button>
+                    </div>
+                    <p id="wizard-status" class="status-message" aria-live="polite"></p>
+                </div>
+
+                <div class="content-module" id="incoming-quote-requests-module">
+                    <h3>📨 Incoming Quote Requests (Session)</h3>
+                    <form id="log-quote-request-form" class="form-grid">
+                        <div><label for="quote-client-name">Client Name:</label><input type="text" id="quote-client-name"></div>
+                        <div><label for="quote-client-contact">Contact:</label><input type="text" id="quote-client-contact"></div>
+                        <div style="grid-column: 1 / -1;"><label for="quote-service-requested">Service(s) Requested:</label><textarea id="quote-service-requested" rows="2"></textarea></div>
+                        <button type="submit" id="add-quote-request-btn" class="primary-action-button"><span class="icon">➕</span> Add Quote Request</button>
+                    </form>
+                    <div id="quote-requests-list">
+                        <p>No quote requests logged in this session.</p>
+                    </div>
+                </div>
+
+                <div class="content-module" id="session-job-log-module">
+                    <h3>📊 Session Job Log & Analysis</h3>
+                    <p class="section-intro">Jobs logged in this session. Data clears on page refresh.</p>
+                    <div id="logged-jobs-list">
+                        <p>No jobs logged yet in this session.</p>
+                    </div>
+                    <div id="session-summary-container">
+                        <h3>Session Summary</h3>
+                        <div id="session-summary-details">
+                             <p>Total Revenue: $0.00</p>
+                             <p>Total Costs: $0.00</p>
+                             <p>Total Profit: $0.00</p>
+                             <p>Overall Profit Margin: 0.00%</p>
+                        </div>
+                    </div>
+                    <button id="analyze-session-btn" class="ai-action-button"><span class="icon">📈</span> Analyze My Session's Jobs</button>
+                    <div id="session-analysis-result" class="result-box" aria-live="polite">Log some jobs and then click here for an AI analysis.</div>
+                </div>
+                 <!-- Old calculator related elements that are being replaced by the wizard -->
+                <div id="profit-result" style="display:none;"></div>
+                <div id="detailed-cost-tips-result" style="display:none;"></div>
+                <div id="profit-booster-tips-result" style="display:none;"></div>
+
+            </section>
+
+            <section id="calendar-page" class="page-content" aria-labelledby="calendar-heading">
+                <h2 id="calendar-heading">📅 Calendar & Scheduling</h2>
+                <p class="section-intro">Visualize your schedule. (Conceptual: Logged jobs could be shown here in a full version).</p>
+                <div class="calendar-container">
+                    <div class="calendar-header">
+                        <button id="prev-month-btn">&lt; Prev</button>
+                        <h3 id="month-year-display">Month Year</h3>
+                        <button id="next-month-btn">Next &gt;</button>
+                    </div>
+                    <div class="calendar-grid">
+                        <!-- Calendar days will be generated by JS -->
+                    </div>
+                </div>
+                <div id="calendar-ai-insights">
+                     <h3>AI Scheduling Tips for the Week</h3>
+                     <button id="get-calendar-ai-tips-btn" class="ai-action-button-alt"><span class="icon">💡</span> Get Scheduling Tips</button>
+                     <div id="calendar-ai-tips-result" class="result-box" aria-live="polite"></div>
+                </div>
+            </section>
+
+            <section id="map-routes-page" class="page-content" aria-labelledby="map-routes-heading">
+                 <h2 id="map-routes-heading">📍 Map & Route Efficiency (AI Powered)</h2>
+                 <p class="section-intro">List your job locations or general areas of operation (e.g., "123 Main St, Anytown", "North Suburbs") to get AI-powered tips on routing and local ad placement.</p>
+                 <div class="map-placeholder">
+                    <p>🗺️ (Conceptual Map Area - AI will provide advice based on locations below)</p>
+                 </div>
+                 <div>
+                     <label for="job-locations-list">Job Locations / Areas of Operation for Today/Week:</label>
+                     <textarea id="job-locations-list" name="job-locations-list" rows="4" placeholder="Example: 123 Main St, Anytown; 456 Oak Ave, Anytown; Commercial district near Elm St."></textarea>
+                 </div>
+                 <button id="get-location-tips-btn" class="ai-action-button"><span class="icon">🗺️</span> Get Route & Ad Tips</button>
+                 <div id="location-tips-result" class="result-box" aria-live="polite">Enter locations and click the button for efficiency and advertising tips.</div>
+            </section>
+            
+            <!-- Existing AI Insights, Daily Review, Community Q&A pages remain largely the same, but listed here for completeness -->
+            <section id="ai-insights-page" class="page-content" aria-labelledby="ai-insights-heading">
+                <h2 id="ai-insights-heading">💡 AI-Powered Insights</h2>
+                <p class="section-intro">Leverage AI to get tailored advice for your landscaping business based on the current season and market trends.</p>
+                
+                <div class="insight-card">
+                    <h3>Seasonal Business Tips</h3>
+                    <button id="get-business-tips-btn" class="ai-action-button-alt"><span class="icon">💡</span> Get AI Business Tips</button>
+                    <div id="business-tips-result" class="result-box" aria-live="polite">Click the button to get general business improvement tips.</div>
+                </div>
+
+                <div class="insight-card">
+                    <h3>Seasonal Service Focus</h3>
+                    <button id="get-seasonal-services-btn" class="ai-action-button-alt"><span class="icon">🎯</span> Get AI Service Recommendations</button>
+                    <div id="seasonal-services-result" class="result-box" aria-live="polite">Click the button to discover services to focus on this season.</div>
+                </div>
+                <!-- Market Pulse is now primarily on Dashboard, but can keep a button here too -->
+                <div class="insight-card">
+                    <h3>Market Pulse & Opportunity Alert</h3>
+                    <button id="get-insights-market-pulse-btn" class="ai-action-button"><span class="icon">🔍</span> Get Market Pulse & Alerts</button>
+                    <div id="insights-market-pulse-result" class="result-box" aria-live="polite">Click to get AI insights on market shifts and new opportunities.</div>
+                </div>
+            </section>
+
+            <section id="daily-review-page" class="page-content" aria-labelledby="daily-review-heading">
+                <h2 id="daily-review-heading">🌟 Daily Recap & Review</h2>
+                <p class="section-intro">Briefly describe your day's key jobs or challenges below (optional), then get a constructive review.</p>
+                <div>
+                    <label for="daily-summary">Your Day's Summary:</label>
+                    <textarea id="daily-summary" name="daily-summary" rows="4" placeholder="e.g., Completed the big Willow Creek project, faced unexpected delays with equipment, client was very happy with the new patio."></textarea>
+                </div>
+                <button id="get-daily-review-btn" class="ai-action-button"><span class="icon">🧘</span> Get Daily Review</button>
+                <div id="daily-review-result" class="result-box" aria-live="polite">Describe your day and click the button for a helpful review.</div>
+            </section>
+
+            <section id="community-qa-page" class="page-content" aria-labelledby="community-qa-heading">
+                <h2 id="community-qa-heading">💬 Community Q&A (AI Powered)</h2>
+                <p class="section-intro">Have a specific question about your landscaping business? Ask here and get insights as if from a knowledgeable community of peers and experts.</p>
+                <div>
+                    <label for="community-question">Your Question:</label>
+                    <textarea id="community-question" name="community-question" rows="4" placeholder="e.g., What's the best way to handle a client who constantly changes their mind? How do I market high-end garden design services effectively?"></textarea>
+                </div>
+                <button id="ask-community-btn" class="ai-action-button"><span class="icon">🗣️</span> Ask the Community AI</button>
+                <div id="community-qa-result" class="result-box" aria-live="polite">Type your question and click the button to get AI-powered community insights.</div>
+            </section>
+
+        </main>
+        <footer>
+            <p>&copy; 2024 Landscaping Optimizer Pro. Elevate Your Business.</p>
+        </footer>
+    </div>
+    <script type="module" src="index.tsx"></script>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>

@@ -19,10 +19,27 @@
     "build:mysconduct": "turbo run build --filter=mysconduct-web",
     "build:mysmanaged": "turbo run build --filter=mysmanaged-web",
     "build:thesatirium": "turbo run build --filter=thesatirium-web",
-    "build:dashboard": "turbo run build --filter=dashboard"
+    "build:dashboard": "turbo run build --filter=dashboard",
+    "build:all-apps": "turbo run build --filter=dashboard --filter=helenkella-web --filter=mysconduct-web --filter=mysmanaged-web --filter=thesatirium-web --filter=lorefront-web --filter=satirium-web",
+    "deploy:firebase": "concurrently \"npm run build:all-apps\" \"firebase deploy\""
   },
   "devDependencies": {
+    "@babel/preset-react": "^7.27.1",
+    "@types/node": "^24.0.14",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "babel-loader": "^10.0.0",
+    "pnpm": "^8.0.0",
     "turbo": "^1.13.0",
-    "pnpm": "^8.0.0"
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@firebase/app": "^0.13.2",
+    "axios": "^1.10.0",
+    "cheerio": "^1.1.0",
+    "concurrently": "^9.2.0",
+    "firebase": "^11.10.0",
+    "firebase-admin": "^13.4.0",
+    "firebase-functions": "^6.3.2"
   }
 }

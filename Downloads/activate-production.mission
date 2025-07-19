@@ -1,0 +1,16 @@
+slug: activate-production
+mission_goal: |
+  Activate all core daemons, open all public endpoints, enforce HTTPS, enable monetization and licensing, and log the transition to production. Notify operator and log in ritual ledger.
+context:
+  operator: helzkelz
+  env: production
+  domains:
+    - helenkella.com
+    - mysconduct.com
+    - satirium.com
+    - lorefront.com
+  alert_webhook: https://discord.com/api/webhooks/...
+  timestamp: "2025-07-14T01:13:11Z"
+metadata:
+  trigger: manual
+  audit: true

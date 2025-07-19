@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahnke Motorsports</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 800px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .logo {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .tagline {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            opacity: 0.8;
+        }
+        
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .service-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-card h3 {
+            margin-bottom: 10px;
+            color: #4ecdc4;
+        }
+        
+        .contact-info {
+            margin-top: 40px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+        
+        .contact-info h3 {
+            margin-bottom: 15px;
+            color: #ff6b6b;
+        }
+        
+        .contact-info p {
+            margin-bottom: 10px;
+        }
+        
+        .coming-soon {
+            background: rgba(255, 193, 7, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 30px;
+            border: 1px solid rgba(255, 193, 7, 0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2.5rem;
+            }
+            
+            .container {
+                padding: 20px;
+                margin: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="logo">MAHNKE MOTORSPORTS</h1>
+        <p class="tagline">Performance. Precision. Passion.</p>
+        
+        <div class="description">
+            <p>Welcome to Mahnke Motorsports, where automotive excellence meets cutting-edge performance. We specialize in high-performance vehicle modifications, racing solutions, and motorsport consulting.</p>
+        </div>
+        
+        <div class="services">
+            <div class="service-card">
+                <h3>🏎️ Performance Tuning</h3>
+                <p>Custom engine tuning and performance optimization for maximum power and efficiency.</p>
+            </div>
+            
+            <div class="service-card">
+                <h3>🔧 Custom Builds</h3>
+                <p>Complete vehicle builds tailored to your racing and performance needs.</p>
+            </div>
+            
+            <div class="service-card">
+                <h3>🏁 Racing Support</h3>
+                <p>Professional racing team support and trackside assistance.</p>
+            </div>
+            
+            <div class="service-card">
+                <h3>⚡ Modifications</h3>
+                <p>High-quality aftermarket parts installation and custom modifications.</p>
+            </div>
+        </div>
+        
+        <div class="contact-info">
+            <h3>📞 Contact Us</h3>
+            <p>Ready to unleash your vehicle's potential?</p>
+            <p>Email: info@mahnkemotorsports.com</p>
+            <p>Phone: (555) 123-RACE</p>
+            <p>Location: Coming Soon</p>
+        </div>
+        
+        <div class="coming-soon">
+            <h3>🚀 More Coming Soon!</h3>
+            <p>We're working hard to bring you the ultimate motorsports experience. Stay tuned for updates on our services, team, and racing events.</p>
+        </div>
+    </div>
+</body>
+</html>

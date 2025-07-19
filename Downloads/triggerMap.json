@@ -1,0 +1,15 @@
+{
+  "summon-lore": {
+    "function": "summon_lore",
+    "parameters": {
+      "archetype": "string"
+    }
+  },
+  "trigger-banishment": {
+    "function": "trigger_banishment",
+    "parameters": {
+      "entity_id": "string",
+      "dimension": "string"
+    }
+  }
+}
